@@ -69,6 +69,10 @@ class WorkoutProvider extends ChangeNotifier {
     }
     return best;
   }
+  void reload() {
+    _workouts = _repo.getAll();
+    notifyListeners();
+  }
 
   Future<void> add(Workout workout) async {
     await _repo.add(workout);

@@ -7,6 +7,7 @@ import '../../data/models/user_profile.dart';
 import 'profile_provider.dart';
 import 'achievements_section.dart';
 import '../weight/weight_card.dart';
+import 'delete_account_section.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -178,6 +179,8 @@ class ProfileScreen extends StatelessWidget {
           const AchievementsSection(),
           const SizedBox(height: 36),
           const WeightCard(),
+          const SizedBox(height: 40),
+          const DeleteAccountSection(),
         ],
       ),
     );
