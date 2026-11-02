@@ -10,6 +10,7 @@ import '../profile/profile_provider.dart';
 import '../steps/steps_provider.dart';
 import '../water/water_card.dart';
 import '../workouts/workout_provider.dart';
+import '../goals/weekly_goal_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   final VoidCallback onOpenWorkouts;
@@ -108,6 +109,8 @@ class DashboardScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const WaterCard(),
+          const SizedBox(height: 16),
+          const WeeklyGoalCard(),
           const SizedBox(height: 32),
           Text('LATEST WORKOUT', style: AppTextStyles.label),
           const SizedBox(height: 12),

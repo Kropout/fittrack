@@ -6,6 +6,7 @@ import '../../core/theme/app_text_styles.dart';
 import '../../data/models/user_profile.dart';
 import 'profile_provider.dart';
 import 'achievements_section.dart';
+import '../weight/weight_card.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -175,6 +176,8 @@ class ProfileScreen extends StatelessWidget {
           Text('ACHIEVEMENTS', style: AppTextStyles.label),
           const SizedBox(height: 16),
           const AchievementsSection(),
+          const SizedBox(height: 36),
+          const WeightCard(),
         ],
       ),
     );
