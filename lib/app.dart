@@ -80,26 +80,42 @@ class _AppShellState extends State<AppShell> {
 
   @override
   Widget build(BuildContext context) {
+    // viewPadding is not consumed by the Scaffold, so this is the real
+    // system gesture/navigation bar height.
+    final bottomInset = MediaQuery.of(context).viewPadding.bottom;
+
     return GradientBackground(
       child: Scaffold(
-        extendBody: true,
-        body: SafeArea(
-          child: PageView(
-            controller: _pageController,
-            onPageChanged: _onPageChanged,
-            children: [
-              _KeepAlive(
-                child: DashboardScreen(onOpenWorkouts: () => _goTo(1)),
+        body: Stack(
+          children: [
+            // Pages run all the way to the bottom edge, so content
+            // scrolls behind the floating bar.
+            SafeArea(
+              bottom: false,
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: _onPageChanged,
+                children: [
+                  _KeepAlive(
+                    child: DashboardScreen(onOpenWorkouts: () => _goTo(1)),
+                  ),
+                  const _KeepAlive(child: WorkoutHistoryScreen()),
+                  const _KeepAlive(child: StatsScreen()),
+                  const _KeepAlive(child: ProfileScreen()),
+                ],
               ),
-              const _KeepAlive(child: WorkoutHistoryScreen()),
-              const _KeepAlive(child: StatsScreen()),
-              const _KeepAlive(child: ProfileScreen()),
-            ],
-          ),
-        ),
-        bottomNavigationBar: FloatingNavBar(
-          currentIndex: _index,
-          onTap: _goTo,
+            ),
+            // Only the pill itself is drawn and tappable.
+            Positioned(
+              left: 24,
+              right: 24,
+              bottom: bottomInset + 16,
+              child: FloatingNavBar(
+                currentIndex: _index,
+                onTap: _goTo,
+              ),
+            ),
+          ],
         ),
       ),
     );
