@@ -6,11 +6,12 @@ import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/progress_ring.dart';
 import '../../core/widgets/stat_tile.dart';
 import '../../data/models/workout.dart';
+import '../goals/weekly_goal_card.dart';
 import '../profile/profile_provider.dart';
+import '../profile/settings_screen.dart';
 import '../steps/steps_provider.dart';
 import '../water/water_card.dart';
 import '../workouts/workout_provider.dart';
-import '../goals/weekly_goal_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   final VoidCallback onOpenWorkouts;
@@ -39,9 +40,44 @@ class DashboardScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('FITTRACK', style: AppTextStyles.label),
-          const SizedBox(height: 12),
-          Text(_greeting(profile?.name ?? ''), style: AppTextStyles.title),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('FITTRACK', style: AppTextStyles.label),
+                    const SizedBox(height: 12),
+                    Text(
+                      _greeting(profile?.name ?? ''),
+                      style: AppTextStyles.title,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SettingsScreen()),
+                ),
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColors.hairline),
+                  ),
+                  child: const Icon(
+                    Icons.settings_outlined,
+                    size: 22,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: 32),
           Center(
             child: ProgressRing(

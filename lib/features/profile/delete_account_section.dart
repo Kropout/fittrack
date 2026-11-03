@@ -15,6 +15,7 @@ class DeleteAccountSection extends StatelessWidget {
     // disappears once the account is deleted.
     final profileProvider = context.read<ProfileProvider>();
     final workoutProvider = context.read<WorkoutProvider>();
+    final navigator = Navigator.of(context);
 
     // Step 1
     final first = await _confirm(
@@ -40,6 +41,7 @@ class DeleteAccountSection extends StatelessWidget {
 
     await profileProvider.deleteAccount();
     workoutProvider.reload();
+    navigator.popUntil((route) => route.isFirst);
   }
 
   Future<bool?> _confirm(

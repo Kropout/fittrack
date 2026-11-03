@@ -7,7 +7,7 @@ import 'core/widgets/gradient_background.dart';
 import 'features/dashboard/dashboard_screen.dart';
 import 'features/onboarding/onboarding_screen.dart';
 import 'features/profile/profile_provider.dart';
-import 'features/profile/profile_screen.dart';
+import 'features/diet/diet_screen.dart';
 import 'features/stats/stats_screen.dart';
 import 'features/steps/steps_provider.dart';
 import 'features/workouts/workout_history_screen.dart';
@@ -101,7 +101,7 @@ class _AppShellState extends State<AppShell> {
                   ),
                   const _KeepAlive(child: WorkoutHistoryScreen()),
                   const _KeepAlive(child: StatsScreen()),
-                  const _KeepAlive(child: ProfileScreen()),
+                  const _KeepAlive(child: DietScreen()),
                 ],
               ),
             ),

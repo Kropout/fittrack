@@ -29,7 +29,7 @@ class FloatingNavBar extends StatelessWidget {
     (Icons.home_outlined, Icons.home, 'Home'),
     (Icons.fitness_center_outlined, Icons.fitness_center, 'Workouts'),
     (Icons.insights_outlined, Icons.insights, 'Stats'),
-    (Icons.person_outline, Icons.person, 'Profile'),
+    (Icons.restaurant_outlined, Icons.restaurant, 'Diet'),
   ];
 
   Widget _item(int i) {

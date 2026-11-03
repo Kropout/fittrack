@@ -6,6 +6,7 @@ import 'data/repositories/profile_repository.dart';
 import 'data/repositories/workout_repository.dart';
 import 'features/goals/goal_provider.dart';
 import 'features/profile/profile_provider.dart';
+import 'features/protein/protein_provider.dart';
 import 'features/steps/steps_provider.dart';
 import 'features/water/water_provider.dart';
 import 'features/weight/weight_provider.dart';
@@ -28,6 +29,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => WaterProvider()),
         ChangeNotifierProvider(create: (_) => WeightProvider()),
         ChangeNotifierProvider(create: (_) => GoalProvider()),
+        ChangeNotifierProvider(create: (_) => ProteinProvider()),
       ],
       child: const FitTrackApp(),
     ),
